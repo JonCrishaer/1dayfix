@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import { motion } from 'framer-motion';
-import { LayoutDashboard, BookOpen, Home, User } from 'lucide-react';
+import { LayoutDashboard, BookOpen, Home, User, Users } from 'lucide-react';
 import Logo from './components/Logo';
 import Footer from './components/Footer';
 
