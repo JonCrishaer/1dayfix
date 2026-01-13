@@ -123,35 +123,29 @@ export default function Dashboard() {
 
   if (loadingProgress) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          className="w-8 h-8 border-2 border-violet-500 border-t-transparent rounded-full"
+          className="w-8 h-8 border-2 border-black border-t-transparent rounded-full"
         />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
-      {/* Ambient background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-white text-black">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl font-bold text-black">
             Deep Focus
           </h1>
-          <p className="text-slate-500 mt-1">Master your cycles of progress</p>
+          <p className="text-gray-600 mt-1">Master your cycles of progress</p>
         </motion.div>
 
         {/* Stats Row */}
@@ -160,26 +154,22 @@ export default function Dashboard() {
             icon={Flame}
             label="Current Streak"
             value={`${progress?.current_streak || 0} days`}
-            gradient="from-orange-500 to-red-600"
           />
           <StatsCard
             icon={Clock}
             label="Focus Time"
             value={`${Math.floor((progress?.total_focus_minutes || 0) / 60)}h`}
             sublabel={`${(progress?.total_focus_minutes || 0) % 60}m`}
-            gradient="from-blue-500 to-cyan-600"
           />
           <StatsCard
             icon={Target}
             label="Sessions"
             value={progress?.sessions_completed || 0}
-            gradient="from-emerald-500 to-teal-600"
           />
           <StatsCard
             icon={Calendar}
             label="Best Streak"
             value={`${progress?.longest_streak || 0} days`}
-            gradient="from-violet-500 to-purple-600"
           />
         </div>
 

@@ -24,22 +24,22 @@ export default function DailyQuests({ tasks = [], onAddTask, onCompleteTask, onD
   const completedCount = tasks.filter(t => t.completed).length;
 
   return (
-    <div className="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800">
+    <div className="bg-white rounded-lg p-6 border border-gray-200">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-lg bg-black flex items-center justify-center">
             <Target className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-white">Daily Quests</h3>
-            <p className="text-sm text-slate-400">{completedCount} of {tasks.length} completed</p>
+            <h3 className="text-lg font-semibold text-black">Daily Quests</h3>
+            <p className="text-sm text-gray-600">{completedCount} of {tasks.length} completed</p>
           </div>
         </div>
         <Button
           onClick={() => setShowAdd(!showAdd)}
           variant="ghost"
           size="icon"
-          className="text-slate-400 hover:text-white"
+          className="text-gray-600 hover:text-black"
         >
           <Plus className="w-5 h-5" />
         </Button>
@@ -57,27 +57,27 @@ export default function DailyQuests({ tasks = [], onAddTask, onCompleteTask, onD
               value={newTask.title}
               onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
               placeholder="Task name (e.g., Write newsletter)"
-              className="bg-slate-800/50 border-slate-700 text-white"
+              className="bg-gray-50 border-gray-300 text-black"
             />
             <div className="flex gap-2">
               <Input
                 value={newTask.target_value}
                 onChange={(e) => setNewTask({ ...newTask, target_value: e.target.value })}
                 placeholder="Target (e.g., 1000 words)"
-                className="bg-slate-800/50 border-slate-700 text-white flex-1"
+                className="bg-gray-50 border-gray-300 text-black flex-1"
               />
-              <div className="flex items-center gap-2 bg-slate-800/50 border border-slate-700 rounded-md px-3">
-                <Clock className="w-4 h-4 text-slate-500" />
+              <div className="flex items-center gap-2 bg-gray-50 border border-gray-300 rounded-md px-3">
+                <Clock className="w-4 h-4 text-gray-600" />
                 <Input
                   type="number"
                   value={newTask.deadline_minutes}
                   onChange={(e) => setNewTask({ ...newTask, deadline_minutes: parseInt(e.target.value) || 60 })}
-                  className="w-16 bg-transparent border-0 text-white p-0"
+                  className="w-16 bg-transparent border-0 text-black p-0"
                 />
-                <span className="text-slate-500 text-sm">min</span>
+                <span className="text-gray-600 text-sm">min</span>
               </div>
             </div>
-            <Button onClick={handleAdd} className="w-full bg-cyan-500 hover:bg-cyan-600">
+            <Button onClick={handleAdd} className="w-full bg-black hover:bg-gray-900">
               Add Quest
             </Button>
           </motion.div>
@@ -86,8 +86,8 @@ export default function DailyQuests({ tasks = [], onAddTask, onCompleteTask, onD
 
       {tasks.length === 0 ? (
         <div className="text-center py-8">
-          <p className="text-slate-500 text-sm">No quests for today</p>
-          <p className="text-slate-600 text-xs mt-1">Add 2-3 most important tasks</p>
+          <p className="text-gray-600 text-sm">No quests for today</p>
+          <p className="text-gray-500 text-xs mt-1">Add 2-3 most important tasks</p>
         </div>
       ) : (
         <div className="space-y-2">
@@ -98,29 +98,29 @@ export default function DailyQuests({ tasks = [], onAddTask, onCompleteTask, onD
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
-                className={`flex items-center gap-3 p-3 rounded-xl transition-all ${
+                className={`flex items-center gap-3 p-3 rounded-lg transition-all ${
                   task.completed 
-                    ? 'bg-emerald-500/10 border border-emerald-500/20' 
-                    : 'bg-slate-800/50 border border-transparent hover:border-slate-700'
+                    ? 'bg-gray-100 border border-gray-300' 
+                    : 'bg-white border border-gray-200 hover:border-gray-300'
                 }`}
               >
                 <button
                   onClick={() => onCompleteTask(task.id)}
                   className={`w-6 h-6 rounded-full flex items-center justify-center transition-all ${
                     task.completed 
-                      ? 'bg-emerald-500 text-white' 
-                      : 'border-2 border-slate-600 hover:border-cyan-500'
+                      ? 'bg-black text-white' 
+                      : 'border-2 border-gray-400 hover:border-black'
                   }`}
                 >
                   {task.completed && <Check className="w-4 h-4" />}
                 </button>
                 
                 <div className="flex-1 min-w-0">
-                  <p className={`text-sm font-medium truncate ${task.completed ? 'text-slate-400 line-through' : 'text-white'}`}>
+                  <p className={`text-sm font-medium truncate ${task.completed ? 'text-gray-500 line-through' : 'text-black'}`}>
                     {task.title}
                   </p>
                   {task.target_value && (
-                    <p className="text-xs text-slate-500 flex items-center gap-2">
+                    <p className="text-xs text-gray-600 flex items-center gap-2">
                       <span>{task.target_value}</span>
                       {task.deadline_minutes && (
                         <>
@@ -136,16 +136,16 @@ export default function DailyQuests({ tasks = [], onAddTask, onCompleteTask, onD
                 </div>
 
                 <span className={`text-xs font-medium px-2 py-1 rounded-full ${
-                  task.priority === 1 ? 'bg-red-500/20 text-red-400' :
-                  task.priority === 2 ? 'bg-amber-500/20 text-amber-400' :
-                  'bg-blue-500/20 text-blue-400'
+                  task.priority === 1 ? 'bg-gray-300 text-gray-700' :
+                  task.priority === 2 ? 'bg-gray-300 text-gray-700' :
+                  'bg-gray-200 text-gray-700'
                 }`}>
                   P{task.priority}
                 </span>
 
                 <button
                   onClick={() => onDeleteTask(task.id)}
-                  className="text-slate-600 hover:text-red-400 transition-colors"
+                  className="text-gray-600 hover:text-black transition-colors"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>

@@ -28,15 +28,15 @@ export default function Achievements({ unlockedAchievements = [], totalXp, level
   const unlockedCount = allAchievements.filter(a => checkUnlocked(a)).length;
 
   return (
-    <div className="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800">
+    <div className="bg-white rounded-lg p-6 border border-gray-200">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-yellow-500 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-lg bg-black flex items-center justify-center">
             <Trophy className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-white">Achievements</h3>
-            <p className="text-sm text-slate-400">{unlockedCount} of {allAchievements.length} unlocked</p>
+            <h3 className="text-lg font-semibold text-black">Achievements</h3>
+            <p className="text-sm text-gray-600">{unlockedCount} of {allAchievements.length} unlocked</p>
           </div>
         </div>
       </div>
@@ -52,18 +52,18 @@ export default function Achievements({ unlockedAchievements = [], totalXp, level
               whileHover={{ scale: 1.05 }}
               className={`relative group cursor-pointer ${!isUnlocked && 'opacity-40'}`}
             >
-              <div className={`aspect-square rounded-xl flex items-center justify-center ${
+              <div className={`aspect-square rounded-lg flex items-center justify-center border ${
                 isUnlocked 
-                  ? `bg-gradient-to-br ${achievement.color}` 
-                  : 'bg-slate-800'
+                  ? 'bg-black border-black text-white' 
+                  : 'bg-gray-100 border-gray-300 text-gray-400'
               }`}>
-                <Icon className={`w-6 h-6 ${isUnlocked ? 'text-white' : 'text-slate-600'}`} />
+                <Icon className="w-6 h-6" />
               </div>
               
               {/* Tooltip */}
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-slate-800 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-black rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
                 <p className="text-white text-xs font-medium">{achievement.name}</p>
-                <p className="text-slate-400 text-xs">{achievement.description}</p>
+                <p className="text-gray-300 text-xs">{achievement.description}</p>
               </div>
             </motion.div>
           );
