@@ -879,6 +879,10 @@ export default function Learn() {
   };
 
   const isLessonCompleted = (lessonId) => completedLessons.includes(`lesson_${lessonId}`);
+  const userProgress = progress;
+  const totalLessons = lessons.length;
+  const completedCount = completedLessons.length;
+  const overallProgress = (completedCount / totalLessons) * 100;
 
   const toggleSection = (sectionIndex) => {
     setExpandedSections(prev => ({
@@ -889,7 +893,7 @@ export default function Learn() {
 
   return (
     <div className="min-h-screen bg-white text-black">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:pt-32">
         <AnimatePresence mode="wait">
           {!selectedLesson ? (
             <motion.div
@@ -898,60 +902,104 @@ export default function Learn() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <div className="mb-8">
+              <div className="mb-12">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-10 h-10 rounded-lg bg-black flex items-center justify-center">
                     <BookOpen className="w-5 h-5 text-white" />
                   </div>
-                  <h1 className="text-3xl font-bold">Training Center</h1>
+                  <h1 className="text-3xl font-bold">Learning Path</h1>
                 </div>
                 <p className="text-gray-600">Master the techniques of deep focus</p>
-                <div className="mt-4 flex items-center gap-4 text-sm">
-                  <span className="text-gray-700">
-                    {completedLessons.length} of {lessons.length} completed
-                  </span>
-                  <div className="h-2 flex-1 max-w-xs bg-gray-200 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-black"
-                      style={{ width: `${(completedLessons.length / lessons.length) * 100}%` }}
+
+                {/* Gamified Progress Overview */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-8 p-6 bg-gradient-to-r from-black to-gray-800 rounded-lg text-white"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <p className="text-gray-300 text-sm mb-1">Your Progress</p>
+                      <p className="text-2xl font-bold">{completedCount} / {totalLessons} Lessons</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-3xl font-bold">{Math.round(overallProgress)}%</p>
+                      <p className="text-gray-300 text-sm">Complete</p>
+                    </div>
+                  </div>
+                  <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${overallProgress}%` }}
+                      transition={{ duration: 1, ease: 'easeOut' }}
+                      className="bg-white h-full rounded-full"
                     />
                   </div>
-                </div>
+                  <p className="text-xs text-gray-300 mt-3">
+                    {completedCount === totalLessons ? '🎉 You\'ve mastered the learning path!' : `Complete ${totalLessons - completedCount} more lesson${totalLessons - completedCount !== 1 ? 's' : ''} to finish!`}
+                  </p>
+                </motion.div>
               </div>
 
               <div className="space-y-3">
-                {lessons.map((lesson) => (
-                  <motion.button
-                    key={lesson.id}
-                    onClick={() => setSelectedLesson(lesson)}
-                    whileHover={{ scale: 1.01 }}
-                    className="w-full text-left p-6 bg-white rounded-lg border border-gray-200 hover:border-gray-400 transition-all"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-lg font-semibold text-black">
-                            {lesson.title}
-                          </h3>
-                          {isLessonCompleted(lesson.id) && (
-                            <CheckCircle className="w-5 h-5 text-black" />
-                          )}
+                {lessons.map((lesson, index) => {
+                  const isCompleted = isLessonCompleted(lesson.id);
+                  const isNext = index === completedCount;
+                  return (
+                    <motion.button
+                      key={lesson.id}
+                      onClick={() => setSelectedLesson(lesson)}
+                      whileHover={{ scale: 1.01 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      className={`w-full text-left p-6 rounded-lg border-2 transition-all relative ${
+                        isCompleted 
+                          ? 'bg-black text-white border-black'
+                          : isNext
+                            ? 'bg-white border-black'
+                            : 'bg-white border-gray-200 hover:border-gray-400'
+                      }`}
+                    >
+                      {isNext && !isCompleted && (
+                        <div className="absolute -top-2 -right-2 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                          NEXT
                         </div>
-                        <p className="text-gray-600 text-sm mb-3">{lesson.description}</p>
-                        <div className="flex items-center gap-4 text-xs text-gray-600">
-                          <span>{lesson.duration}</span>
-                          <span>+{lesson.xp} XP</span>
-                          <span>{lesson.sections.length} sections</span>
+                      )}
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm flex-shrink-0 ${
+                              isCompleted ? 'bg-white text-black' :
+                              isNext ? 'bg-orange-100 text-orange-600' : 'bg-gray-100'
+                            }`}>
+                              {index + 1}
+                            </div>
+                            <h3 className={`text-lg font-semibold ${isCompleted ? 'text-white' : 'text-black'}`}>
+                              {lesson.title}
+                            </h3>
+                            {isCompleted && (
+                              <span className="text-xs font-bold px-2 py-1 rounded bg-white/20">✓ MASTERED</span>
+                            )}
+                          </div>
+                          <p className={`text-sm mb-3 line-clamp-1 ${isCompleted ? 'text-gray-200' : 'text-gray-600'}`}>
+                            {lesson.description}
+                          </p>
+                          <div className={`flex items-center gap-4 text-xs ${isCompleted ? 'text-gray-300' : 'text-gray-600'}`}>
+                            <span>⏱ {lesson.duration}</span>
+                            <span>⚡ +{lesson.xp} XP</span>
+                            <span>📖 {lesson.sections.length} sections</span>
+                          </div>
+                        </div>
+                        <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 font-bold ${
+                          isCompleted ? 'bg-white text-black' : 'bg-gray-100 text-gray-600'
+                        }`}>
+                          {isCompleted ? '✓' : '→'}
                         </div>
                       </div>
-                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                        isLessonCompleted(lesson.id) ? 'bg-black text-white' : 'bg-gray-100'
-                      }`}>
-                        <Zap className="w-5 h-5" />
-                      </div>
-                    </div>
-                  </motion.button>
-                ))}
+                    </motion.button>
+                  );
+                })}
               </div>
             </motion.div>
           ) : (
