@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import { motion } from 'framer-motion';
-import { LayoutDashboard, BookOpen, Home } from 'lucide-react';
+import { LayoutDashboard, BookOpen, Home, User } from 'lucide-react';
 import Logo from './components/Logo';
+import Footer from './components/Footer';
 
 export default function Layout({ children, currentPageName }) {
   const navItems = [
@@ -53,10 +54,10 @@ export default function Layout({ children, currentPageName }) {
             <div className="max-w-7xl mx-auto w-full px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Logo size="md" />
-                <span className="font-bold text-black text-lg tracking-tight">1day</span>
+                <span className="font-bold text-black text-lg tracking-tight">1DAY</span>
               </div>
 
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 ml-auto">
                 {navItems.map(item => {
                   const Icon = item.icon;
                   const isActive = currentPageName === item.page;
@@ -75,6 +76,17 @@ export default function Layout({ children, currentPageName }) {
                     </Link>
                   );
                 })}
+                <Link
+                  to={createPageUrl('Profile')}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
+                    currentPageName === 'Profile' 
+                      ? 'bg-black text-white' 
+                      : 'text-gray-600 hover:text-black'
+                  }`}
+                >
+                  <User className="w-4 h-4" />
+                  <span className="text-sm font-medium">Profile</span>
+                </Link>
               </div>
             </div>
           </nav>
@@ -85,6 +97,8 @@ export default function Layout({ children, currentPageName }) {
       <main className={!isHome ? 'sm:pt-20 pb-24 sm:pb-8' : ''}>
         {children}
       </main>
+
+      {!isHome && <Footer />}
     </div>
   );
 }

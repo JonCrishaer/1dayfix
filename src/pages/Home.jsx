@@ -18,7 +18,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Logo size="md" />
-            <span className="font-bold text-black text-lg tracking-tight">1day</span>
+            <span className="font-bold text-black text-lg tracking-tight">1DAY</span>
           </div>
           <Button 
             onClick={handleSignUp}
@@ -40,6 +40,11 @@ export default function Home() {
             >
               <div className="mb-6">
                 <span className="text-sm font-semibold text-gray-600 tracking-wide uppercase">Focus Training</span>
+              </div>
+              <div className="mb-6">
+                <span className="inline-block text-xs font-semibold text-black tracking-widest uppercase bg-gray-100 px-4 py-2 rounded-full mb-4">
+                  Change your life in one day
+                </span>
               </div>
               <h1 className="text-5xl lg:text-6xl font-bold text-black leading-tight mb-6">
                 Master Deep Work in One Day
@@ -168,10 +173,10 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="flex items-center gap-2 mb-6 md:mb-0">
                 <Logo size="sm" />
-                <span className="font-semibold text-black">1day</span>
+                <span className="font-semibold text-black">1DAY</span>
               </div>
               <p className="text-sm text-gray-600 text-center md:text-right">
-                Inspired by the deep focus techniques from <a href="https://twitter.com/thedankoe" target="_blank" rel="noopener noreferrer" className="font-semibold text-black hover:underline">Dan Koe</a>
+                © 2026 1DAY. Inspired by <a href="https://twitter.com/thedankoe" target="_blank" rel="noopener noreferrer" className="font-semibold text-black hover:underline">Dan Koe</a>'s deep focus methodology.
               </p>
             </div>
           </div>

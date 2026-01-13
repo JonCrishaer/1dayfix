@@ -1,6 +1,7 @@
 import Dashboard from './pages/Dashboard';
 import Learn from './pages/Learn';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
 import __Layout from './Layout.jsx';
 
 
@@ -8,6 +9,7 @@ export const PAGES = {
     "Dashboard": Dashboard,
     "Learn": Learn,
     "Home": Home,
+    "Profile": Profile,
 }
 
 export const pagesConfig = {
