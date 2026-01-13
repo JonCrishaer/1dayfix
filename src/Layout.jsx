@@ -12,7 +12,7 @@ export default function Layout({ children, currentPageName }) {
     { name: 'Training', icon: BookOpen, page: 'Learn' },
   ];
 
-  const isHome = currentPageName === 'Home';
+  const isHome = currentPageName === 'Home' || currentPageName === 'Contact' || currentPageName === 'Community';
 
   return (
     <div className="min-h-screen bg-white">

@@ -1,15 +1,19 @@
 import Dashboard from './pages/Dashboard';
-import Learn from './pages/Learn';
 import Home from './pages/Home';
+import Learn from './pages/Learn';
 import Profile from './pages/Profile';
+import Community from './pages/Community';
+import Contact from './pages/Contact';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
     "Dashboard": Dashboard,
-    "Learn": Learn,
     "Home": Home,
+    "Learn": Learn,
     "Profile": Profile,
+    "Community": Community,
+    "Contact": Contact,
 }
 
 export const pagesConfig = {
