@@ -1,6 +1,5 @@
-# 1DAY - De
+# 1DAY - Deep Focus & Productivity App
 <img width="1396" height="1147" alt="Screenshot 2026-01-17 at 8 50 58 AM" src="https://github.com/user-attachments/assets/3ef79a0f-3a07-48a6-ad42-584efb10da31" />
-ep Focus & Productivity App
 
 ## Change Your Life in One Day.
 
