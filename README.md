@@ -1,39 +1,91 @@
-**Welcome to your Base44 project** 
+# 1DAY - Deep Focus & Productivity App
 
-**About**
+## Change Your Life in One Day.
 
-View and Edit  your app on [Base44.com](http://Base44.com) 
+1DAY is a powerful web application designed to help you master deep work, boost productivity, and achieve your goals through structured training and gamified progress tracking. Inspired by proven methodologies, this app guides you through cycles of intense focus, helps you identify and eliminate distractions, and provides a supportive community to keep you accountable.
 
-This project contains everything you need to run your app locally.
+## Features
 
-**Edit the code in your local development environment**
+- **Gamified Learning Path**: Structured lessons on deep work, focus techniques, and productivity, complete with progress tracking, XP rewards, and achievement badges.
+- **Focus Timer**: Dedicated sessions to dive deep into your most important tasks, tracking your time and rewarding your efforts.
+- **Daily Quests**: Set and conquer daily tasks with quantified targets and deadlines to build consistent habits.
+- **Progress Dashboard**: Visualize your growth with stats on total XP, current level, focus minutes, and daily streaks.
+- **Focus Blocker Management**: Identify and address common distractions to create an optimal environment for concentration.
+- **Achievements System**: Unlock badges and milestones as you progress through your journey, celebrating your dedication and mastery.
+- **Community & Accountability**: Connect with other users, view leaderboards, and engage in challenges to foster a supportive environment.
+- **User Profile**: Manage your account settings and personalize your experience.
 
-Any change pushed to the repo will also be reflected in the Base44 Builder.
+## Technologies Used
 
-**Prerequisites:** 
+- **Frontend**: React, TypeScript, Tailwind CSS
+- **State Management**: React Query
+- **Animations**: Framer Motion
+- **UI Components**: Shadcn/ui
+- **Icons**: Lucide React
 
-1. Clone the repository using the project's Git URL 
-2. Navigate to the project directory
-3. Install dependencies: `npm install`
-4. Create an `.env.local` file and set the right environment variables
+## Getting Started
 
-```
-VITE_BASE44_APP_ID=your_app_id
-VITE_BASE44_APP_BASE_URL=your_backend_url
+To get a local copy up and running, follow these simple steps.
 
-e.g.
-VITE_BASE44_APP_ID=cbef744a8545c389ef439ea6
-VITE_BASE44_APP_BASE_URL=https://my-to-do-list-81bfaad7.base44.app
-```
+### Prerequisites
 
-Run the app: `npm run dev`
+- Node.js (v18 or higher)
+- npm or yarn
 
-**Publish your changes**
+### Installation
 
-Open [Base44.com](http://Base44.com) and click on Publish.
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/1day-app.git
+    cd 1day-app
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+3.  **Set up environment variables:**
+    Create a `.env` file in the root directory based on `.env.example` and fill in your application's API keys or configuration settings.
 
-**Docs & Support**
+    ```
+    # Example .env content
+    # VITE_APP_API_URL=your_api_url
+    # VITE_APP_CLIENT_ID=your_client_id
+    ```
+    *(Note: This application integrates with a backend-as-a-service for user authentication, data storage, and integrations. You would typically configure these details here.)*
 
-Documentation: [https://docs.base44.com/Integrations/Using-GitHub](https://docs.base44.com/Integrations/Using-GitHub)
+4.  **Run the development server:**
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
+    Open your browser and navigate to `http://localhost:5173` (or the port specified in your console).
 
-Support: [https://app.base44.com/support](https://app.base44.com/support)
+## Usage
+
+-   **Dashboard**: Track your progress, start focus sessions, and manage daily quests.
+-   **Training**: Explore lessons and modules to learn new deep work techniques.
+-   **Community**: Engage with other users, check leaderboards, and participate in group challenges.
+-   **Profile**: Update your personal information and settings.
+
+## Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+**1DAY** – Built with passion for focus.
