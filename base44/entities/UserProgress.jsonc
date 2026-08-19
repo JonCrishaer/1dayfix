@@ -1,0 +1,67 @@
+{
+  "name": "UserProgress",
+  "type": "object",
+  "properties": {
+    "current_cycle": {
+      "type": "string",
+      "enum": [
+        "perplexity",
+        "curiosity",
+        "intensity",
+        "consistency"
+      ],
+      "default": "perplexity",
+      "description": "Current phase in the progress cycle"
+    },
+    "total_xp": {
+      "type": "number",
+      "default": 0,
+      "description": "Total experience points earned"
+    },
+    "level": {
+      "type": "number",
+      "default": 1,
+      "description": "Current level"
+    },
+    "current_streak": {
+      "type": "number",
+      "default": 0,
+      "description": "Current daily streak"
+    },
+    "longest_streak": {
+      "type": "number",
+      "default": 0,
+      "description": "Longest streak achieved"
+    },
+    "total_focus_minutes": {
+      "type": "number",
+      "default": 0,
+      "description": "Total minutes spent in focus sessions"
+    },
+    "sessions_completed": {
+      "type": "number",
+      "default": 0,
+      "description": "Total focus sessions completed"
+    },
+    "last_session_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of last completed session"
+    },
+    "achievements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of unlocked achievement IDs"
+    },
+    "focus_blockers_removed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of focus blockers user has addressed"
+    }
+  },
+  "required": []
+}

@@ -1,0 +1,41 @@
+{
+  "name": "FocusSession",
+  "type": "object",
+  "properties": {
+    "session_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the session was completed"
+    },
+    "duration_minutes": {
+      "type": "number",
+      "description": "Duration of the session in minutes"
+    },
+    "task_description": {
+      "type": "string",
+      "description": "What the user worked on"
+    },
+    "xp_earned": {
+      "type": "number",
+      "description": "XP earned from this session"
+    },
+    "cycle_phase": {
+      "type": "string",
+      "enum": [
+        "perplexity",
+        "curiosity",
+        "intensity",
+        "consistency"
+      ],
+      "description": "Which cycle phase the session was in"
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the session was completed"
+    }
+  },
+  "required": [
+    "duration_minutes"
+  ]
+}
